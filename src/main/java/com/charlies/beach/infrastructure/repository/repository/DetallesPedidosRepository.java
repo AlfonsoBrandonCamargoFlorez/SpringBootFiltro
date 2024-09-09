@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.charlies.beach.domain.entities.DetallesPedidos;
 
-public interface DetallesPedidoRepository extends JpaRepository<DetallesPedidos, Long>{
+public interface DetallesPedidosRepository extends JpaRepository<DetallesPedidos, Long>{
  
 
 }

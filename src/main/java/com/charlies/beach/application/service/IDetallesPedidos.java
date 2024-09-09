@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.charlies.beach.domain.entities.DetallesPedidos;
 
-public interface IDestallesPedidos {
+public interface IDetallesPedidos {
 
         // para encontrar//
     Optional<DetallesPedidos> findById(Long id);
