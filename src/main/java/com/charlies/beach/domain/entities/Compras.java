@@ -1,13 +1,13 @@
 package com.charlies.beach.domain.entities;
 
 import java.sql.Date;
+
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,31 +19,27 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 @Entity
-public class Pedidos {
-    @Id
 
+public class Compras {
+@Id
+    // genero el id de la tabla y que se autoincremente
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Embedded
-    Audit audit = new Audit();
+    private int id;
+    
 
     @Column(columnDefinition = "DATE", nullable = false)
-    private Date fechapedido;
+    private Date fecha;
 
     @Column(columnDefinition = "LONG", nullable = false)
-    private Long Precio;
+    private Long total;
 
     @ManyToOne
-    private Clientes clientes;
+    private Proveedores proveedores;
 
-    @ManyToOne
-    private Empleados empleados;
+    //  @OneToMany(mappedBy = "compras", cascade = CascadeType.ALL, orphanRemoval = true)
+    // @JsonIgnore // Evita el ciclo infinito en la serialización JSON
+    // private Set<DetallesCompras> DetallesCompras;
 
-    @OneToMany(mappedBy = "pedidos", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore // Evita el ciclo infinito en la serialización JSON
-    private Set<DetallesPedidos> detallesPedidos;
 
 }

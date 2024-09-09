@@ -1,13 +1,13 @@
 package com.charlies.beach.domain.entities;
 
 
+
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,38 +17,43 @@ import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
-//con los dos primeros evito tener que crear aqui los getter y setter
 @Getter
 @Setter
-// convierto esto en una entidad para crear la tabnla de la base de datos
 @Entity
 
-// nombre de la tabla en la base de datos, si no se especifica se toma el nombre
-// del entity en singular
-
-public class Clientes {
-    @Id
+public class Proveedores {
+@Id
     // genero el id de la tabla y que se autoincremente
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "VARCHAR(100)", nullable = false, unique = true)
+    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     private String nombre;
+
+    @Column(columnDefinition = "LONG", nullable = false)
+    private Long contacto;
 
     @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     private String email;
 
     @Column(columnDefinition = "LONG", nullable = false)
-    private long telefono;
-
-    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
-    private String password;
+    private Long telefono;
 
     @ManyToOne
     private Ciudades ciudades;
 
-    // @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    // @OneToMany(mappedBy = "proveedores", cascade = CascadeType.ALL, orphanRemoval = true)
     // @JsonIgnore // Evita el ciclo infinito en la serialización JSON
-    // private Set<Ventas> ventas;
+    // private Set<Compras> compras;
+
+    // @OneToMany(mappedBy = "proveedores", cascade = CascadeType.ALL, orphanRemoval = true)
+    // @JsonIgnore // Evita el ciclo infinito en la serialización JSON
+    // private Set<Repuestos> repuestos;
+    
+
+    
+
+    
 
 }

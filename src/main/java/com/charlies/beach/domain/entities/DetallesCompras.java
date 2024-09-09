@@ -1,9 +1,6 @@
 package com.charlies.beach.domain.entities;
 
-
-
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,31 +11,26 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 @Entity
 
-public class DetallesPedidos {
+public class DetallesCompras {
     @Id
+    // genero el id de la tabla y que se autoincremente
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     
-    @Embedded 
-    Audit audit = new Audit();
 
-    @Column(columnDefinition = "Int", nullable = false)
+    @Column(columnDefinition = "INT", nullable = false)
     private int cantidad;
 
     @Column(columnDefinition = "LONG", nullable = false)
     private Long preciounitario;
 
     @ManyToOne
-    private Pedidos pedidos;
+    private Repuestos repuestos;
 
     @ManyToOne
-    private Menus menus;
-
-    
-
+    private Compras compras;
     
 
 

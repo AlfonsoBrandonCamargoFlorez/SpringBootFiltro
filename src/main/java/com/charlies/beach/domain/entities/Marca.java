@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,31 +16,25 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 @Entity
-public class Empleados {
+
+public class Marca {
     @Id
+    // genero el id de la tabla y que se autoincremente
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @Embedded
-    Audit audit = new Audit();
-
-    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
+    
+    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     private String nombre;
 
-    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
-    private String apellido;
-
-    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
-    private String cargo;
-
-    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
-    private String telefono;
-
-    @OneToMany(mappedBy = "empleados", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore // Evita el ciclo infinito en la serialización JSON
-    private Set<Pedidos> pedidos;
+    private Set<Bicicletas> bicicletas;
+
+    @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore // Evita el ciclo infinito en la serialización JSON
+    private Set<Repuestos> repuestos;
 
 
 }

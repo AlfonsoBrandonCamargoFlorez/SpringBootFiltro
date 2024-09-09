@@ -3,23 +3,23 @@ package com.charlies.beach.application.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.charlies.beach.domain.entities.Clientes;
+import com.charlies.beach.domain.entities.Ventas;
 
-public interface IClientes {
+public interface IVentas {
 
     // para encontrar//
-    Optional<Clientes> findById(Long id);
+    Optional<Ventas> findById(Long id);
 
     // para guardar//
-    Clientes save(Clientes clientes);
+    Ventas save(Ventas bicicletas);
 
     // para eliminar//
     void deleteById(Long id);
 
     // para listar todas//
-    List<Clientes> findAll();
+    List<Ventas> findAll();
 
     // para actualizar//
-    Clientes update(Long id, Clientes clientes);
+    Ventas update(Long id, Ventas bicicletas);
 
 }
